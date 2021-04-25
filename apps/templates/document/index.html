@@ -1,0 +1,79 @@
+{% extends "dashboard.html" %}
+{% load humanize heroicons %}
+
+{% block content %}
+    <div class="flex items-start justify-center">
+        <div class="w-full space-y-4">
+          <div class="flex items-center justify-between h-10">
+              <h1 class="opacity-50">Documents</h1>
+
+              {% if perms.document.add_document %}
+              <a href="{% url "document:new" %}" class="btn-outline">
+                  {% heroicon_outline 'plus' class="w-5 h-5 mr-1" %}
+                  Add document
+              </a>
+              {% endif %}
+          </div>
+
+          <div class="my-6 overflow-x-auto rounded shadow">
+              <table class="w-full table-auto min-w-max">
+                  <thead>
+                      <tr class="text-sm text-gray-600 bg-gray-200">
+                          <th class="px-6 py-3 text-left">Name</th>
+                          <th class="px-6 py-3 text-left">Owner</th>
+                          <th class="px-6 py-3 text-left">PDF layout</th>
+                          <th class="px-6 py-3 text-left">Download PDF</th>
+                          <th class="px-6 py-3 text-left">Created at</th>
+                          <th class="px-6 py-3 text-left">Updated at</th>
+                          <th class="px-6 py-3 text-left">Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-sm font-light text-gray-600">
+                      {% for document in documents %}
+                      <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+                          <td class="px-6 py-3 text-left space-x-1">
+                            <a href="{% url 'document:detail' document.id %}" class="text-link inline text-indigo-500">
+                              <span class="font-medium">{{ document.name }}</span>
+                            </a>
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {{ document.user }}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                            {% if document.layout %}
+                            <a href="{% url 'document:editor' document.id %}" class="text-link inline text-indigo-500">
+                                Edit layout
+                            </a>
+                            {% else %}
+                            <a href="{% url 'document:editor' document.id %}" class="text-link inline text-indigo-500">
+                                Add layout
+                            </a>
+                            {% endif %}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                            {% if document.layout %}
+                            <a href="{% url 'document:download' document.id %}" class="btn-outline">
+                                Download PDF
+                            </a>
+                            {% endif %}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {{ document.created_at }}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {{ document.updated_at }}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                            <a href="{% url 'document:delete' document.id %}" class="text-red-500">
+                                Delete
+                            </a>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+          {% include "common/pagination.html" %}
+        </div>
+    </div>
+{% endblock %}

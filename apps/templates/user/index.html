@@ -1,0 +1,70 @@
+{% extends "dashboard.html" %}
+{% load group_name heroicons %}
+
+{% block content %}
+    <div class="flex items-start justify-center">
+        <div class="w-full space-y-4">
+          <div class="flex items-center justify-between h-10">
+              <h1 class="opacity-50">User management > Users</h1>
+
+              {% if perms.account.add_user %}
+              <a href="{% url "account:user_new" %}" class="btn-outline">
+                  {% heroicon_outline 'plus' class="w-5 h-5" %}
+                  Add user
+              </a>
+              {% endif %}
+          </div>
+
+          <div class="my-6 overflow-x-auto rounded shadow">
+              <table class="w-full table-auto min-w-max">
+                  <thead>
+                      <tr class="text-sm text-gray-600 bg-gray-200">
+                          <th class="px-6 py-3 text-left">Username</th>
+                          <th class="px-6 py-3 text-left">Role</th>
+                          <th class="px-6 py-3 text-left">Groups</th>
+                          <th class="px-6 py-3 text-left">Last login</th>
+                          <th class="px-6 py-3 text-center">Status</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-sm font-light text-gray-600">
+                      {% for user in users %}
+                      <tr class="bg-white border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+                      {% if perms.account.view_user %}
+                          onclick="window.location.replace('{% url 'account:user_detail' user.id %}')"
+                      {% endif %}
+                      >
+                          <td class="px-6 py-3 text-left space-x-1">
+                              <span class="font-medium">{{ user.username }}</span>
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {{ user.role | title }}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {% for group in user.groups.all %}
+                                {{ group | group_name }}{% if not forloop.last %},{% endif %}
+                              {% endfor %}
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {% firstof user.last_login "Never login." %}
+                          </td>
+                          <td class="px-6 py-3 text-center">
+                              {% if user.is_active %}
+                              <span class="px-3 py-1 text-xs text-blue-600 bg-blue-200 rounded-full">
+                                  Active
+                              </span>
+                              {% else %}
+                              <span class="px-3 py-1 text-xs text-purple-600 bg-purple-200 rounded-full">
+                                  Inactive
+                              </span>
+                              {% endif %}
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+
+          {% include "common/pagination.html" %}
+        </div>
+    </div>
+{% endblock %}

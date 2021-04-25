@@ -1,0 +1,18 @@
+{% load heroicons %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}
+      :class="{'hidden': !open}"
+      x-data="{open: true}">
+      <span class="alert-content">
+        {{ message }}
+        <a @click="open = false" class="text-link">
+          {% heroicon_outline 'x' class="w-3 h-3" %}
+        </a>
+      </span>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

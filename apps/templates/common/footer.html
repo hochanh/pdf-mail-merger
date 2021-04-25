@@ -1,0 +1,4 @@
+{% load settings %}
+<footer class="relative inset-x-0 bottom-0 mt-10 mb-4 text-xs text-center opacity-30">
+    <a href="{% settings_value "APP_LINK" %}" class="inline text-link">{% settings_value "APP_NAME" %}</a> &copy; {% now "Y" %}
+</footer>

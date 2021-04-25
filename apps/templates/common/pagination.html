@@ -1,0 +1,29 @@
+{% load heroicons %}
+<div class="flex items-center justify-between text-sm opacity-70">
+    <span class="flex items-center my-4 space-x-2">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="text-link btn-light">
+              {% heroicon_outline 'chevron-double-left' class="w-4 h-4" %}
+            </a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="text-link btn-light">
+              {% heroicon_outline 'chevron-left' class="w-4 h-4" %}
+            </a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="text-link btn-light">
+              {% heroicon_outline 'chevron-right' class="w-4 h-4" %}
+            </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="text-link btn-light">
+              {% heroicon_outline 'chevron-double-right' class="w-4 h-4" %}
+            </a>
+        {% endif %}
+    </span>
+    <span>
+        Total: {{ page_obj.paginator.count }}.
+    </span>
+</div>

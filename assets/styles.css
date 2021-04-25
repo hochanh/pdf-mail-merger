@@ -1,0 +1,146 @@
+@layer components {
+  /* elements */
+  .sidebar__header {
+    @apply block w-full mt-5 text-sm border-b opacity-70;
+  }
+
+  .sidebar__item {
+    @apply flex items-center block px-4 py-2 mt-1 text-sm font-semibold bg-transparent rounded-lg hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  }
+
+  .sidebar__item.active {
+    @apply bg-gray-200 outline-none;
+  }
+
+  .card-header {
+    @apply rounded-t-md bg-gray-800 flex justify-between items-center px-4 py-2 text-white;
+  }
+
+  .card-body {
+    @apply rounded-b-md border bg-white px-4 py-4;
+  }
+
+
+  /* global */
+  .prose {
+    @apply max-w-full;
+  }
+  .btn-primary {
+    @apply inline-flex items-center px-3 py-1 text-white bg-indigo-600 border border-transparent cursor-pointer rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all;
+  }
+  .btn-danger {
+    @apply inline-flex items-center px-3 py-1 text-white bg-red-600 border border-transparent cursor-pointer rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all;
+  }
+  .btn-warning {
+    @apply inline-flex items-center px-3 py-1 text-white bg-yellow-600 border border-transparent cursor-pointer rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all;
+  }
+  .btn-success {
+    @apply inline-flex items-center px-3 py-1 text-white bg-green-600 border border-transparent cursor-pointer rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all;
+  }
+  .btn-outline {
+    @apply inline-flex items-center px-3 py-1 text-indigo-500 bg-transparent border border-indigo-600 cursor-pointer rounded-md hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all;
+  }
+  .btn-light {
+    @apply inline-flex items-center px-3 py-1 text-gray-500 bg-gray-50 border border-gray-600 cursor-pointer rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all;
+  }
+  .btn-group {
+    @apply flex space-x-2 items-center justify-center;
+  }
+  .btn-disabled {
+    @apply bg-gray-200 cursor-not-allowed;
+  }
+  .form-control {
+    @apply relative px-3 py-2 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm disabled:bg-gray-200;
+  }
+  .control-group {
+    @apply flex space-x-2 items-center;
+  }
+
+  .form-checkbox {
+    @apply text-indigo-600 border-gray-300 rounded shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+
+  .form-block {
+    @apply block w-full;
+  }
+
+  .form-inline {
+    @apply inline;
+  }
+
+  .invalid-feedback {
+    @apply text-red-500;
+  }
+
+  .alert {
+    @apply py-2 text-white border-0 mb-1;
+  }
+
+  .alert-content {
+    @apply flex items-center justify-between px-4 mx-auto;
+  }
+
+  .alert-success {
+    @apply bg-green-400;
+  }
+
+  .alert-info {
+    @apply bg-blue-400;
+  }
+
+  .alert-error {
+    @apply bg-red-400;
+  }
+
+  .errorlist li {
+    @apply text-red-500;
+  }
+
+  .text-link {
+    @apply flex items-center justify-center cursor-pointer hover:text-indigo-600 transition-all;
+  }
+
+  .dropdown-wrapper {
+    @apply absolute z-10 w-40 text-sm bg-white border shadow top-2 rounded-md right-5;
+  }
+
+  .dropdown-item {
+    @apply flex items-center justify-start px-3 py-2 opacity-80 hover:bg-gray-100;
+  }
+
+  .x-enter {
+    @apply transition ease-out duration-300;
+  }
+
+  .x-enter-start {
+    @apply opacity-0 transform -translate-y-2;
+  }
+
+  .x-enter-end {
+    @apply opacity-100 transform translate-y-0;
+  }
+
+  .x-enter-start-reverse {
+    @apply opacity-0 transform translate-y-2;
+  }
+
+  .x-enter-end-reverse {
+    @apply opacity-100 transform translate-y-0;
+  }
+
+  .x-leave {
+    @apply transition ease-in duration-300;
+  }
+
+  .x-leave-end {
+    @apply opacity-0 transform -translate-y-3;
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}

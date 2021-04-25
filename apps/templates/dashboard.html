@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static heroicons settings %}
+
+{% block body %}
+<!-- component -->
+{% include 'common/trial.html' %}
+<div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
+  <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64" x-data="{ open: false }">
+    <div class="flex flex-row items-center justify-between flex-shrink-0 px-4 py-4">
+      <a href="/" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
+        {% settings_value 'APP_NAME' %}
+      </a>
+      <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+        {% heroicon_outline 'menu' class="w-6 h-6" %}
+      </button>
+    </div>
+
+    <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
+
+      {% if perms.document %}
+        <span class="sidebar__header">Documents</span>
+        {% if perms.document.view_document %}
+        <a class="sidebar__item {% if '/document' in request.path %}active{% endif %}"
+          href="{% url "document:index" %}">
+          Documents
+        </a>
+        {% endif %}
+      {% endif %}
+
+      {% if perms.account %}
+        <span class="sidebar__header">Account</span>
+        <a class="sidebar__item {% if '/account/detail' in request.path %}active{% endif %}"
+          href="{% url 'account:account_detail' %}">
+          Account
+        </a>
+
+        {% if perms.auth.view_group %}
+        <a class="sidebar__item {% if '/account/groups' in request.path %}active{% endif %}"
+          href="{% url 'account:group_index' %}">
+          Groups
+        </a>
+        {% endif %}
+
+        {% if perms.account.view_user %}
+        <a class="sidebar__item {% if '/account/users' in request.path %}active{% endif %}"
+          href="{% url 'account:user_index' %}">
+          Users
+        </a>
+        {% endif %}
+      {% endif %}
+
+      <span class="sidebar__header">Profile</span>
+      <a class="sidebar__item {% if '/account/profile' in request.path %}active{% endif %}"
+        href="{% url 'account:profile_detail' %}">
+        Profile
+      </a>
+      <a class="sidebar__item" href="{% url 'logout' %}">
+        Log out {% heroicon_outline 'logout' class="w-4 h-4 ml-1" %}
+      </a>
+
+      {% include 'common/footer.html' %}
+    </nav>
+  </div>
+  <div class="w-full p-4 overflow-x-auto bg-gray-100">
+    {% include 'common/message.html' %}
+
+    {% block content %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% load add_class %}
+
+{% block content %}
+    {% if next %}
+    <p class="alert alert-info">
+        {% if user.is_authenticated %}
+        <span class="alert-content">Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</span>
+        {% else %}
+        <span class="alert-content">Please login to see this page.</span>
+        {% endif %}
+    </p>
+    {% endif %}
+
+    <div class="flex items-center justify-center py-12">
+      <div class="w-full max-w-md space-y-8">
+        {% include 'common/message.html' %}
+
+        <div>
+          <h1 class="mt-6 text-2xl font-medium text-center">
+            Sign in to your account
+          </h2>
+        </div>
+        <form class="mt-8 space-y-6 px-4" method="POST">
+            {% csrf_token %}
+            {% if form.errors %}
+            <div class="invalid-feedback">
+                <p>Your username and password didn't match. Please try again.</p>
+            </div>
+            {% endif %}
+
+          <div class="space-y-3">
+            <div>
+                {{ form.username.label_tag }}
+                {{ form.username | add_class:"form-control form-block" }}
+            </div>
+            <div>
+                {{ form.password.label_tag }}
+                {{ form.password | add_class:"form-control form-block" }}
+            </div>
+          </div>
+
+          <div>
+            <input type="submit" value="Login" class="w-full btn-primary">
+            <input type="hidden" name="next" value="{{ next }}">
+          </div>
+
+          <div class="text-center">
+            No account?
+            <a href="{% url 'account:user_register' %}" class="inline text-indigo-600 text-link">
+                Sign up!
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}

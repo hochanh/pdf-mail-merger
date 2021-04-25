@@ -1,0 +1,37 @@
+{% extends "dashboard.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class="flex flex-col items-start justify-start">
+    <div class="container mx-auto">
+        <h1 class="text-lg">Welcome, <strong>{{ request.user.username }}</strong>!</h1>
+
+        <div class="my-8 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="p-5 bg-white rounded shadow-sm">
+                <div class="text-base text-gray-400">Team documents</div>
+                <div class="flex items-center pt-1">
+                    <div class="text-2xl font-bold text-gray-900 ">{{ account_documents|intcomma }}</div>
+                </div>
+            </div>
+            <div class="p-5 bg-white rounded shadow-sm">
+                <div class="text-base text-gray-400 ">Your documents</div>
+                <div class="flex items-center pt-1">
+                    <div class="text-2xl font-bold text-gray-900 ">{{ user_documents|intcomma }}</div>
+                </div>
+            </div>
+            <div class="p-5 bg-white rounded shadow-sm">
+                <div class="text-base text-gray-400 ">Plan</div>
+                <div class="flex items-center pt-1">
+                    <div class="text-2xl font-bold text-gray-900 ">{{ request.user.account.get_plan_display }}</div>
+                </div>
+            </div>
+            <div class="p-5 bg-white rounded shadow-sm">
+                <div class="text-base text-gray-400 ">Plan ends at</div>
+                <div class="flex items-center pt-1">
+                    <div class="text-2xl font-bold text-gray-900 ">{{ request.user.account.plan_end_at }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

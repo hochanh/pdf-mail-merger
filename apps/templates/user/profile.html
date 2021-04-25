@@ -1,0 +1,45 @@
+{% extends "dashboard.html" %}
+{% load add_class group_name %}
+
+{% block content %}
+    <div class="flex items-start justify-center">
+        <div class="w-full space-y-4">
+          <h1 class="opacity-50">Profile</h1>
+
+          <div class="my-6 mx-auto">
+              <div class="max-w-md space-y-6">
+                  {% csrf_token %}
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        Username:
+                        <span class="font-medium">
+                            {{ request.user.username }}
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        Organization:
+                        <span class="font-medium">
+                        {{ request.user.account.name }}
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        Role:
+                        <span class="font-medium">
+                        {{ request.user.role }}
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        Date joined:
+                        <span class="font-medium">
+                        {{ request.user.date_joined }}
+                        </span>
+                    </div>
+                  </div>
+                  <a class="btn-outline" href="/">
+                     Back
+                  </a>
+              </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

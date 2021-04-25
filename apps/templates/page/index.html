@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="flex flex-col items-center justify-center py-12 space-y-6">
+
+  <h1 class="mt-6 text-2xl font-medium text-center">
+    Ready to generate tons of PDF using just clicks?
+  </h1>
+
+  <div class="flex items-center justify-center space-x-3">
+    <a href="{% url 'login' %}" class="btn-primary">Log in</a>
+    <a href="{% url 'account:user_register' %}" class="btn-outline">Sign up</a>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?fit=crop&w=640" class="rounded">
+</main>
+{% endblock %}

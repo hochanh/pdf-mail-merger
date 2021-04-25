@@ -1,0 +1,13 @@
+db.sqlite3
+*.pyc
+.env
+/node_modules
+*.DS_Store
+/.vscode
+/.vim
+/yarn.lock
+
+apps/static
+
+/media
+/public

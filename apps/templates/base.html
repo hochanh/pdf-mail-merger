@@ -1,0 +1,27 @@
+{% load i18n static settings %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="icon" href="{% static 'images/favicon.ico'  %}" />
+    <link rel="apple-touch-icon" href="{% static 'images/logo200.png' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>{% block title %}{% if title %}{{ title }} · {% settings_value "APP_NAME" %}{% else %}{% settings_value "APP_NAME" %}{% endif %}{% endblock %} · {% settings_value "APP_DESCRIPTION" %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app.css' %}">
+    <script defer type="text/javascript" src="{% static 'app.js' %}"></script>
+
+    {% block extrahead %}
+    {% endblock %}
+  </head>
+  <body class="bg-gray-100">
+    {% block body %}
+      {% block content %}
+      {% endblock %}
+      {% include 'common/footer.html' %}
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "dashboard.html" %}
+{% load group_name heroicons %}
+
+{% block content %}
+    <div class="flex items-start justify-center">
+        <div class="w-full space-y-4">
+          <div class="flex items-center justify-between h-10">
+              <h1 class="opacity-50">User management > Groups</h1>
+
+              {% if perms.auth.add_group %}
+              <a href={% url "account:group_new" %}>
+                  <button class="btn-outline">
+                      {% heroicon_outline 'plus' class="w-5 h-5" %}
+                      New group
+                  </button>
+              </a>
+              {% endif %}
+          </div>
+
+          <div class="my-6 overflow-x-auto rounded shadow">
+              <table class="w-full table-auto min-w-max">
+                  <thead>
+                      <tr class="text-sm text-gray-600 bg-gray-200">
+                          <th class="px-6 py-3 text-left">Name</th>
+                          <th class="px-6 py-3 text-left">Permissions</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-sm font-light text-gray-600">
+                      {% for group in groups %}
+                      <tr class="bg-white border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+                      {% if perms.auth.view_group %}
+                          onclick="window.location.replace('{% url 'account:group_detail' group.id %}')"
+                      {% endif %}
+                      >
+                          <td class="px-6 py-3 text-left space-x-1">
+                              <span class="font-medium">{{ group | group_name }}</span>
+                          </td>
+                          <td class="px-6 py-3 text-left">
+                              {% for perm in group.permissions.all %}
+                                {{ perm.name }}{% if not forloop.last %},{% endif %}
+                              {% endfor %}
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+
+          {% include "common/pagination.html" %}
+        </div>
+    </div>
+{% endblock %}

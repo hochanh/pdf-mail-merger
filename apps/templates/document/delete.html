@@ -1,0 +1,28 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+    <div class="flex items-start justify-center">
+        <div class="w-full space-y-4">
+            <h1 class="opacity-50">Documents > Delete</h1>
+
+          <div class="my-6 mx-auto">
+              <form class="max-w-md space-y-6" method="POST">
+                  {% csrf_token %}
+                  <div>
+                      Are you sure to delete <strong>"{{ document.name }}"</strong> permanently?
+                  </div>
+                  <div>
+                      <input
+                          type="submit"
+                          value="Delete"
+                          class="btn-danger">
+
+                        <a href="{% url 'document:index' %}" class="btn-outline">
+                            Cancel
+                        </a>
+                  </div>
+              </form>
+          </div>
+        </div>
+    </div>
+{% endblock %}
