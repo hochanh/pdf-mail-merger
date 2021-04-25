@@ -168,6 +168,6 @@ Q_CLUSTER = {
 APP_NAME = "Pdf Mail Merger"
 APP_LINK = "https://pdf.tixsumo.com"
 APP_EMAIL = os.environ.get("APP_EMAIL", "pdf@tixsumo.com")
-APP_DESCRIPTION = "Pdf mail merger"
+APP_DESCRIPTION = "Pdf mail merger, pdf editor, pdf generator for Excel & CSV files"
 
 GRAPPELLI_ADMIN_TITLE = APP_NAME
