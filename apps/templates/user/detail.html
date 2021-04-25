@@ -4,9 +4,9 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <h1 class="opacity-50">User management > Edit user</h1>
-
-          {{ form.non_field_errors }}
+          <div class="flex items-center justify-between h-10">
+              <h1 class="opacity-50">User management > Edit user</h1>
+          </div>
 
           <div class="my-6 mx-auto">
               <form class="max-w-md space-y-6" method="POST">
@@ -40,7 +40,7 @@
                     <div>
                         <p class="flex items-center justify-between">
                         Groups:
-                            <a href="{% url 'account:group_new' %}" class="text-link text-indigo-500">
+                            <a href="{% url 'account:group_new' %}" class="text-link-inline">
                                 {% heroicon_outline 'plus' %}
                             </a>
                         </p>

@@ -9,9 +9,11 @@ urlpatterns = [
     path('users/new', user.CreateView.as_view(), name='user_new'),
     path('users', user.IndexView.as_view(), name='user_index'),
 
-    path('profile', user.ProfileView.as_view(), name='profile_detail'),
+    path('profile', user.ProfileView.as_view(), name='user_profile'),
     path('register', user.RegisterView.as_view(), name='user_register'),
+
     path('detail', account.DetailView.as_view(), name='account_detail'),
+    path('upgrade', account.UpgradeView.as_view(), name='account_upgrade'),
 
     path('groups/<int:pk>', group.DetailView.as_view(), name='group_detail'),
     path('groups/new', group.CreateView.as_view(), name='group_new'),

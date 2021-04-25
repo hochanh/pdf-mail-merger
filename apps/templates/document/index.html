@@ -32,7 +32,7 @@
                       {% for document in documents %}
                       <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
                           <td class="px-6 py-3 text-left space-x-1">
-                            <a href="{% url 'document:detail' document.id %}" class="text-link inline text-indigo-500">
+                            <a href="{% url 'document:detail' document.id %}" class="text-link-inline">
                               <span class="font-medium">{{ document.name }}</span>
                             </a>
                           </td>
@@ -41,11 +41,11 @@
                           </td>
                           <td class="px-6 py-3 text-left">
                             {% if document.layout %}
-                            <a href="{% url 'document:editor' document.id %}" class="text-link inline text-indigo-500">
+                            <a href="{% url 'document:editor' document.id %}" class="text-link-inline">
                                 Edit layout
                             </a>
                             {% else %}
-                            <a href="{% url 'document:editor' document.id %}" class="text-link inline text-indigo-500">
+                            <a href="{% url 'document:editor' document.id %}" class="text-link-inline">
                                 Add layout
                             </a>
                             {% endif %}

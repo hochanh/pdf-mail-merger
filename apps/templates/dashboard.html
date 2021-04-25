@@ -51,7 +51,7 @@
 
       <span class="sidebar__header">Profile</span>
       <a class="sidebar__item {% if '/account/profile' in request.path %}active{% endif %}"
-        href="{% url 'account:profile_detail' %}">
+        href="{% url 'account:user_profile' %}">
         Profile
       </a>
       <a class="sidebar__item" href="{% url 'logout' %}">

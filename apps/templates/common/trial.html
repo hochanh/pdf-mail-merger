@@ -1,13 +1,16 @@
 {% load heroicons %}
 
 {% if request.user.account.plan == "trial" %}
-<p class="bg-yellow-600 text-white px-4 py-1 flex items-center justify-between"
+<div class="bg-yellow-600 text-white px-4 py-1 flex items-center justify-between"
     x-data="{open: true}"
     :class="{'hidden': !open}">
-    Your trial plan will expire at {{ request.user.account.plan_end_at }}
+    <p>
+        Your trial plan will expire at {{ request.user.account.plan_end_at }}
+        <a class="text-link inline" href="{% url 'account:account_upgrade' %}">Upgrade now.</a>
+    </p>
 
     <a @click="open = false" class="text-link">
       {% heroicon_outline 'x' class="w-3 h-3" %}
     </a>
-</p>
+</div>
 {% endif %}

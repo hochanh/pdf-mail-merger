@@ -35,3 +35,11 @@ class DetailView(LoginRequiredMixin, PermissionRequiredMixin, generic.View):
 
         messages.add_message(self.request, messages.ERROR, 'Save failed!')
         return render(self.request, self.template_name, {'form': form})
+
+
+class UpgradeView(LoginRequiredMixin, PermissionRequiredMixin, generic.View):
+    template_name = 'account/upgrade.html'
+    permission_required = ('account.view_account', 'account.change_account')
+
+    def get(self, *args, **kwargs):
+        return render(self.request, self.template_name)

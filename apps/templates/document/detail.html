@@ -4,7 +4,9 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
+          <div class="flex items-center justify-between h-10">
             <h1 class="opacity-50">Documents > {% if form.instance.id %}Update{% else %}Create{% endif %}</h1>
+          </div>
 
           <div class="my-6 mx-auto">
               <form class="max-w-md space-y-6" enctype="multipart/form-data" method="POST">
@@ -35,7 +37,7 @@
                         {% if form.instance.file %}
                         <p class="text-sm mb-2">
                             Current file:
-                            <a class="text-link inline text-indigo-500"
+                            <a class="text-link-inline"
                                 href="{{ form.instance.file.url }}">{{ form.instance.file }}</a>
                         </p>
                         {% endif %}
