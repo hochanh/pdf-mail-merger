@@ -51,14 +51,13 @@ class Renderer(object):
         content = row.get("qrcode", "Missing qrcode column")
 
         level = 'H'
-        if len(content) > 8:
+        if len(content) > 32:
             level = 'M'
-        if len(content) > 16:
+        if len(content) > 128:
             level = 'L'
 
         reqs = float(o['size']) * mm
         qrw = QrCodeWidget(content, barLevel=level,
-                           qrVersion=1,
                            barHeight=reqs, barWidth=reqs)
         d = Drawing(reqs, reqs)
         d.add(qrw)
@@ -134,7 +133,7 @@ class Renderer(object):
     def draw_page(self, canvas: Canvas, row: dict, show_page=True):
         for o in self.layout:
             if o['type'] == "barcodearea":
-                self._draw_barcodearea(canvas, row)
+                self._draw_barcodearea(canvas, o, row)
             elif o['type'] == "textarea":
                 self._draw_textarea(canvas, o, row)
 
