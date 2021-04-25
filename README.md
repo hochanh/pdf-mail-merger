@@ -23,7 +23,7 @@ Then use Django collectstatic: `poetry run ./manage.py collectstatic`.
 
 ## Hosted version
 
-[pdf.tixsumo.com](https://pdf-mail-merger.tixsumo.com).
+[pdf.tixsumo.com](https://pdf.tixsumo.com).
 
 
 ## Self-host
