@@ -10,5 +10,5 @@ poetry run ./manage.py collectstatic --noinput
 
 echo "Restarting gunicorn..."
 killall gunicorn || true
-poetry run gunicorn --workers 1 --bind=0.0.0.0:8000 apps.wsgi:application --timeout 30 --daemon
+poetry run gunicorn --workers 1 --bind=0.0.0.0:8001 apps.wsgi:application --timeout 30 --daemon
 echo "Gunicorn restarted!"
