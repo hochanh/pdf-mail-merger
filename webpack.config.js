@@ -1,7 +1,10 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const dotenv = require('dotenv').config();
+
 const exclusions = /node_modules/;
+const ASSET_PATH = dotenv.parsed.ASSET_PATH || '/static/';
 
 module.exports = [
   {
@@ -11,7 +14,7 @@ module.exports = [
     },
     output: {
       path: path.resolve(__dirname, "apps/static"),
-      publicPath: "/static/",
+      publicPath: ASSET_PATH,
       filename: "[name].js",
       chunkFilename: "[id]-[chunkhash].js",
     },
