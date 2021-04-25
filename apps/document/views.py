@@ -4,7 +4,8 @@ from io import BytesIO
 
 from django import forms
 from django.contrib import messages
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
 from django.contrib.staticfiles import finders
 from django.core.files import File
 from django.core.files.storage import default_storage
@@ -29,7 +30,7 @@ from apps.pdf.views import BaseEditorView
 logger = logging.getLogger(__name__)
 
 
-class DownloadView(BaseEditorView):
+class DownloadView(LoginRequiredMixin, BaseEditorView):
     title = _('PDF download')
 
     def get_output(self, *args, **kwargs):
@@ -58,7 +59,8 @@ class DownloadView(BaseEditorView):
         return prov._default_layout()
 
     def get(self, request, *args, **kwargs):
-        document = get_object_or_404(Document, pk=kwargs.get('pk'))
+        document = get_object_or_404(Document, pk=kwargs.get('pk'),
+                                     account=request.user.account)
         return self.pdf_by_document(document)
 
     def pdf_by_document(self, document: Document):
@@ -76,7 +78,7 @@ class DownloadView(BaseEditorView):
         return resp
 
 
-class EditorView(BaseEditorView):
+class EditorView(LoginRequiredMixin, BaseEditorView):
 
     @cached_property
     def document(self):

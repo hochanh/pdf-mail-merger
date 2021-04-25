@@ -29,7 +29,7 @@ fabric.Barcodearea = fabric.util.createClass(fabric.Rect, {
 
         ctx.font = '16px Arial';
         ctx.fillStyle = '#fff';
-        ctx.fillText(gettext('Check-in QR'), -this.width / 2, -this.height / 2 + 20);
+        ctx.fillText(gettext('QR code'), -this.width / 2, -this.height / 2 + 20);
     },
 });
 fabric.Barcodearea.fromObject = function (object, callback, forceAsync) {
@@ -197,7 +197,7 @@ var editor = {
         } else if (key.startsWith('meta:')) {
             return key.substr(5);
         }
-        return $('#toolbox-content option[value='+key+']').attr('data-sample') || '';
+        return $('#toolbox-content option[value="'+key+'"]').attr('data-sample') || '';
     },
 
     _load_pdf: function (dump) {
@@ -407,7 +407,7 @@ var editor = {
         var o = editor.fabric.getActiveObject();
         if(!o) {
             $("#toolbox").removeAttr("data-type");
-            $("#toolbox-heading").text(gettext("Ticket design"));
+            $("#toolbox-heading").text(gettext("PDF design"));
             $("#pdf-info-width").val(editor._px2mm(editor.pdf_viewport.width).toFixed(2));
             $("#pdf-info-height").val(editor._px2mm(editor.pdf_viewport.height).toFixed(2));
         } else if (o.type == 'activeSelection') {

@@ -54,7 +54,7 @@
                                 <strong>
                                     {% blocktrans trimmed %}
                                         This feature is only intended for advanced users. We recommend to only use it
-                                        to copy and share ticket designs, not to modify the design source code.
+                                        to copy and share PDF designs, not to modify the design source code.
                                     {% endblocktrans %}
                                 </strong>
                             </div>
@@ -82,12 +82,12 @@
                                 </div>
                             </div>
                             <div id="loading-initial">
-                                <h2>{% trans "Welcome to the PDF ticket editor!" %}</h2>
+                                <h2>{% trans "Welcome to the PDF editor!" %}</h2>
                                 <p>
                                     {% blocktrans trimmed %}
-                                        This editor allows you to create a design for the PDF tickets of your event.
+                                        This editor allows you to create a design for the PDF documents of your event.
                                         You can upload a background PDF and then use this tool to place texts and
-                                        a QR code on the ticket.
+                                        a QR code on the document.
                                     {% endblocktrans %}
                                 </p>
                                 <p>&nbsp;</p>
@@ -98,7 +98,7 @@
                                     {% blocktrans trimmed %}
                                         Please note that the editor can only provide a rough preview. Some details,
                                         for example in text rendering, might look slightly different in the final
-                                        tickets. You can use the "Preview" button on the right for a more precise
+                                        documents. You can use the "Preview" button on the right for a more precise
                                         preview.
                                     {% endblocktrans %}
                                 </p>
@@ -215,8 +215,7 @@
                         <div class="col-sm-12">
                             <p>
                                 {% blocktrans trimmed %}
-                                    The final QR code will be slightly smaller because some whitespace is required
-                                    for proper scanning.
+                                    This QR code will get data from "qrcode" column in your data file.
                                 {% endblocktrans %}
                             </p>
                         </div>
