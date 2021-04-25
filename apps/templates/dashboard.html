@@ -2,13 +2,13 @@
 {% load static heroicons settings %}
 
 {% block body %}
-<!-- component -->
-{% include 'common/trial.html' %}
+{% include 'common/upgrade.html' %}
+
 <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
   <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64" x-data="{ open: false }">
     <div class="flex flex-row items-center justify-between flex-shrink-0 px-4 py-4">
       <a href="/" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-        {% settings_value 'APP_NAME' %}
+        {{ request.user.account.name }}
       </a>
       <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
         {% heroicon_outline 'menu' class="w-6 h-6" %}

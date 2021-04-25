@@ -1,11 +1,13 @@
 {% load heroicons %}
 
-{% if request.user.account.plan == "trial" %}
+{% if request.user.account.plan == "trial" or request.user.account.plan_expired %}
 <div class="bg-yellow-600 text-white px-4 py-1 flex items-center justify-between"
     x-data="{open: true}"
     :class="{'hidden': !open}">
     <p>
-        Your trial plan will expire at {{ request.user.account.plan_end_at }}
+        Your {{ request.user.account.get_plan_display }} plan
+        {% if request.user.account.plan_expired %}has expired{% else %}will expire{% endif %}
+        at {{ request.user.account.plan_end_at }}.
         <a class="text-link inline" href="{% url 'account:account_upgrade' %}">Upgrade now.</a>
     </p>
 

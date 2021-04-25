@@ -1,5 +1,5 @@
 {% extends "dashboard.html" %}
-{% load add_class %}
+{% load humanize add_class %}
 
 {% block content %}
     <div class="flex items-start justify-center">
@@ -32,15 +32,15 @@
                     </div>
 
                     <div>
-                        Page limit:
+                        Pages per PDF file limit:
                         <p class="font-medium">
-                            {{ form.instance.plan_limit }}
+                            {{ form.instance.plan_limit|intcomma }}
                         </p>
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
                     <input type="submit" value="Save" class="btn-primary">
-                    <a class="btn-success" href="{% url "account:account_upgrade" %}">
+                    <a class="btn-outline" href="{% url "account:account_upgrade" %}">
                         Upgrade
                     </a>
                   </div>

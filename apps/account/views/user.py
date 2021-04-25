@@ -146,7 +146,7 @@ class RegisterView(generic.CreateView):
 
         if form.is_valid():
             instance = form.save(commit=False)
-            account = Account.objects.create(name=instance.username)
+            account = Account.objects.create(name=f"{instance.username}'s account")
             instance.account_id = account.id
             instance.role = "admin"
 

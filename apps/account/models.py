@@ -7,6 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 from apps.common.models import TimestampModel
 
+TRIAL_LIMIT = 10
+
 USER_PERMISSIONS = [
     # Account
     'add_account',
@@ -43,7 +45,11 @@ class Account(TimestampModel, models.Model):
     plan = models.CharField(choices=(("trial", "Trial"), ("pro", "Pro")),
                             max_length=255, default="trial")
     plan_end_at = models.DateTimeField(default=trial_time)
-    plan_limit = models.PositiveIntegerField(default=10)
+    plan_limit = models.PositiveIntegerField(default=TRIAL_LIMIT)
+
+    @property
+    def plan_expired(self):
+        return self.plan_end_at < timezone.now()
 
     def __str__(self):
         return self.name

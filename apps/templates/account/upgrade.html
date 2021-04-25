@@ -1,4 +1,5 @@
 {% extends "dashboard.html" %}
+{% load settings %}
 
 {% block content %}
     <div class="flex items-start justify-center">
@@ -9,7 +10,7 @@
 
           <div class="space-y-4">
               <p>
-                  Please send us an email to <a class="text-link-inline" href="mailto:pdf@tixsumo.com?subject=Upgrade PDF mail merger account">pdf@tixsumo.com</a> with your requirement details and we will upgrade the account for you.
+              Please send us an email to <a class="text-link-inline" href="mailto:{% settings_value 'APP_EMAIL' %}?subject=Upgrade PDF mail merger account">{% settings_value 'APP_EMAIL' %}</a> with your requirement details and we will upgrade the account for you.
               </p>
           </div>
         </div>
