@@ -25,6 +25,7 @@ django-storages = "^1.11.1"
 boto3 = "^1.17.54"
 django-simple-captcha = "^0.5.14"
 tablib = {extras = ["xlsx", "xls"], version = "^3.0.0"}
+whitenoise = "^5.2.0"
 
 
 [tool.poetry.dev-dependencies]

@@ -18,4 +18,8 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_DEFAULT_ACL = 'public-read'
 
 DEFAULT_FILE_STORAGE = 'apps.common.storages.MediaRootS3BotoStorage'
-STATICFILES_STORAGE = 'apps.common.storages.StaticRootS3BotoStorage'
+
+# FIXME: Load worker file from another domain, we use whitenoise for now
+# STATICFILES_STORAGE = 'apps.common.storages.StaticRootS3BotoStorage'
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')  # NOQA
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
