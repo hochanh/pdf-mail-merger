@@ -28,7 +28,7 @@
             <div class="p-5 bg-white rounded shadow-sm">
                 <div class="text-base text-gray-400 ">Pages per PDF limit</div>
                 <div class="flex items-center pt-1">
-                    <div class="text-2xl font-bold text-gray-900 ">{{ request.user.account.plan_limit|intcomma }}</div>
+                    <div class="text-2xl font-bold text-gray-900 ">{{ request.user.account.current_limit|intcomma }}</div>
                 </div>
             </div>
         </div>
