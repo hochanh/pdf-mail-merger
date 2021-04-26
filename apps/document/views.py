@@ -19,7 +19,6 @@ from django.views import generic
 from reportlab.lib import pagesizes
 from reportlab.pdfgen import canvas
 
-from apps.account.models import TRIAL_LIMIT
 from apps.common.views import PAGINATE_BY, AccountView
 from apps.document.models import DEFAULT_BACKGROUND, Document
 from apps.document.output import PdfDocumentOutput
@@ -64,7 +63,7 @@ class DownloadView(LoginRequiredMixin, BaseEditorView):
         return self.pdf_by_document(document)
 
     def pdf_by_document(self, document: Document):
-        limit = document.account.plan_limit if not document.account.plan_expired else TRIAL_LIMIT
+        limit = document.account.current_limit
 
         fname, mimet, data = self.generate(
             document.load_data().dict[:limit],

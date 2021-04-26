@@ -51,6 +51,10 @@ class Account(TimestampModel, models.Model):
     def plan_expired(self):
         return self.plan_end_at < timezone.now()
 
+    @property
+    def current_limit(self):
+        return self.plan_limit if not self.plan_expired else TRIAL_LIMIT
+
     def __str__(self):
         return self.name
 
