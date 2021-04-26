@@ -2,6 +2,8 @@
 
 > PDF mail merger, PDF editor, PDF generator using Excel & CSV
 
+![PDF mail merger](./static/images/pdf-mail-merger.png)
+
 ## Local setup
 
 Make sure you got `npm` and `poetry` beforehand.
