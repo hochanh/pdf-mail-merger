@@ -18,7 +18,7 @@ def bg_name(instance, filename: str) -> str:
     secret = get_random_string(length=16, allowed_chars=string.ascii_letters + string.digits)
 
     return 'background/{id}/{secret}.pdf'.format(
-        id=instance.pk,
+        id=instance.user_id,
         secret=secret
     )
 
@@ -26,7 +26,7 @@ def bg_name(instance, filename: str) -> str:
 def data_name(instance, filename: str) -> str:
     secret = get_random_string(length=16, allowed_chars=string.ascii_letters + string.digits)
     return 'data/{id}/{secret}.{ext}'.format(
-        id=instance.id,
+        id=instance.user_id,
         secret=secret,
         ext=filename.split('.')[-1],
     )
