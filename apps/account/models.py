@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from apps.common.models import TimestampModel
 
-TRIAL_LIMIT = 10
+TRIAL_LIMIT = 50
 
 USER_PERMISSIONS = [
     # Account

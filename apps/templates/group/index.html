@@ -27,13 +27,12 @@
                   </thead>
                   <tbody class="text-sm font-light text-gray-600">
                       {% for group in groups %}
-                      <tr class="bg-white border-b border-gray-200 cursor-pointer hover:bg-gray-100"
-                      {% if perms.auth.view_group %}
-                          onclick="window.location.replace('{% url 'account:group_detail' group.id %}')"
-                      {% endif %}
-                      >
+                      <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
                           <td class="px-6 py-3 text-left space-x-1">
-                              <span class="font-medium">{{ group | group_name }}</span>
+                              <a href="{% url 'account:group_detail' group.id %}"
+                                  class="text-link-inline">
+                                  <span class="font-medium">{{ group | group_name }}</span>
+                              </a>
                           </td>
                           <td class="px-6 py-3 text-left">
                               {% for perm in group.permissions.all %}
