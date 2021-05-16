@@ -344,7 +344,7 @@
                     <input type="hidden" value="" name="data">
                     <input type="hidden" value="" name="background">
                     <input type="hidden" value="true" name="preview">
-                    <a type="submit" class="btn btn-light" href="{% url 'document:detail' view.kwargs.pk %}">
+                    <a class="btn btn-light" href="{% url 'document:detail' view.kwargs.pk %}">
                         {% trans "Cancel" %}
                     </a>
                     <button type="submit" class="btn btn-outline" id="editor-preview">
