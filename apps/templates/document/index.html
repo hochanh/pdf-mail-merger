@@ -4,8 +4,8 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <div class="flex items-center justify-between h-10">
-              <h1 class="opacity-50">Documents</h1>
+          <div class="header">
+              <h1>Documents</h1>
 
               {% if perms.document.add_document %}
               <a href="{% url "document:new" %}" class="btn-outline">
@@ -22,7 +22,7 @@
                           <th class="px-6 py-3 text-left">Name</th>
                           <th class="px-6 py-3 text-left">Owner</th>
                           <th class="px-6 py-3 text-left">PDF layout</th>
-                          <th class="px-6 py-3 text-left">Download PDF</th>
+                          <th class="px-6 py-3 text-left">Download</th>
                           <th class="px-6 py-3 text-left">Created at</th>
                           <th class="px-6 py-3 text-left">Updated at</th>
                           <th class="px-6 py-3 text-left">Delete</th>
@@ -41,11 +41,13 @@
                           </td>
                           <td class="px-6 py-3 text-left">
                             {% if document.layout %}
-                            <a href="{% url 'document:editor' document.id %}" class="text-link-inline">
+                            <a href="{% url 'document:editor' document.id %}" class="btn-light">
+                                {% heroicon_outline 'pencil-alt' class="w-5 h-5 mr-1" %}
                                 Edit layout
                             </a>
                             {% else %}
-                            <a href="{% url 'document:editor' document.id %}" class="text-link-inline">
+                            <a href="{% url 'document:editor' document.id %}" class="btn-light">
+                                {% heroicon_outline 'plus' class="w-5 h-5 mr-1" %}
                                 Add layout
                             </a>
                             {% endif %}
@@ -53,7 +55,8 @@
                           <td class="px-6 py-3 text-left">
                             {% if document.layout %}
                             <a href="{% url 'document:download' document.id %}" class="btn-outline">
-                                Download PDF
+                                {% heroicon_outline 'document-download' class="w-5 h-5 mr-1" %}
+                                PDF
                             </a>
                             {% endif %}
                           </td>

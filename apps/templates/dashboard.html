@@ -28,12 +28,7 @@
       {% endif %}
 
       {% if perms.account %}
-        <span class="sidebar__header">Account</span>
-        <a class="sidebar__item {% if '/account/detail' in request.path %}active{% endif %}"
-          href="{% url 'account:account_detail' %}">
-          Account
-        </a>
-
+        <span class="sidebar__header">User management</span>
         {% if perms.auth.view_group %}
         <a class="sidebar__item {% if '/account/groups' in request.path %}active{% endif %}"
           href="{% url 'account:group_index' %}">
@@ -49,7 +44,11 @@
         {% endif %}
       {% endif %}
 
-      <span class="sidebar__header">Profile</span>
+      <span class="sidebar__header">Account</span>
+      <a class="sidebar__item {% if '/account/detail' in request.path %}active{% endif %}"
+        href="{% url 'account:account_detail' %}">
+        Account
+      </a>
       <a class="sidebar__item {% if '/account/profile' in request.path %}active{% endif %}"
         href="{% url 'account:user_profile' %}">
         Profile

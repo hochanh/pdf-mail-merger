@@ -4,12 +4,12 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <div class="flex items-center justify-between h-10">
-              <h1 class="opacity-50">User management > Account</h1>
+          <div class="header">
+              <h1>My account</h1>
           </div>
 
           <div class="my-6 mx-auto">
-              <form class="max-w-md space-y-6" enctype="multipart/form-data" method="POST">
+              <form class="max-w-3xl space-y-6" enctype="multipart/form-data" method="POST">
                   {% csrf_token %}
                   <div class="space-y-6">
                     <div>

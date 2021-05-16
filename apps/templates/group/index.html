@@ -4,8 +4,8 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <div class="flex items-center justify-between h-10">
-              <h1 class="opacity-50">User management > Groups</h1>
+          <div class="header">
+              <h1>Groups</h1>
 
               {% if perms.auth.add_group %}
               <a href={% url "account:group_new" %}>

@@ -1,15 +1,15 @@
 {% extends "dashboard.html" %}
-{% load add_class %}
+{% load add_class heroicons %}
 
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <div class="flex items-center justify-between h-10">
-            <h1 class="opacity-50">Documents > {% if form.instance.id %}Update{% else %}Create{% endif %}</h1>
+          <div class="header">
+            <h1>{% if form.instance.id %}Update{% else %}Create{% endif %} document</h1>
           </div>
 
           <div class="my-6 mx-auto">
-              <form class="max-w-md space-y-6" enctype="multipart/form-data" method="POST">
+              <form class="max-w-3xl space-y-6" enctype="multipart/form-data" method="POST">
                   {% csrf_token %}
                   <div class="space-y-6">
                     <div>
@@ -46,15 +46,31 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                      <input
-                          type="submit"
-                          value="{% if form.instance.id %}Update{% else %}Create{% endif %}"
-                          class="btn-primary">
+                      <span>
+                          <input
+                              type="submit"
+                              value="{% if form.instance.id %}Update{% else %}Create{% endif %}"
+                              class="btn-primary">
+                          <a href="{% url 'document:index' %}" class="btn-light">
+                              Cancel
+                          </a>
+                      </span>
 
                       {% if form.instance.id %}
-                        <a href="{% url 'document:editor' form.instance.id %}" class="btn-success">
-                            Edit layout
+                      <span>
+                        <a href="{% url 'document:editor' form.instance.id %}"
+                            title="Edit PDF layout"
+                            class="btn-light">
+                            {% heroicon_outline 'pencil-alt' class="w-5 h-5" %}
                         </a>
+                        {% if form.instance.layout %}
+                        <a href="{% url 'document:download' form.instance.id %}"
+                            title="Download PDF"
+                            class="btn-outline">
+                            {% heroicon_outline 'document-download' class="w-5 h-5" %}
+                        </a>
+                        {% endif %}
+                      </span>
                       {% endif %}
                   </div>
               </form>

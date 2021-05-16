@@ -12,6 +12,9 @@
     <script type="application/json" id="editor-data">
         {{ layout|safe }}
     </script>
+    <div class="header">
+      <h1>Layout editor</h1>
+    </div>
     <div class="flex flex-wrap justify-start space-x-4">
         <div class="flex-grow max-w-4xl">
             <div class="mt-3 card">
@@ -341,7 +344,10 @@
                     <input type="hidden" value="" name="data">
                     <input type="hidden" value="" name="background">
                     <input type="hidden" value="true" name="preview">
-                    <button type="submit" class="btn btn-light" id="editor-preview">
+                    <a type="submit" class="btn btn-light" href="{% url 'document:detail' view.kwargs.pk %}">
+                        {% trans "Cancel" %}
+                    </a>
+                    <button type="submit" class="btn btn-outline" id="editor-preview">
                         {% trans "Preview" %}
                     </button>
                     <button type="submit" class="btn btn-primary btn-save" id="editor-save">

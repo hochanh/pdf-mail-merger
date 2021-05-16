@@ -4,8 +4,8 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <div class="flex items-center justify-between h-10">
-              <h1 class="opacity-50">User management > Users</h1>
+          <div class="header">
+              <h1>Users</h1>
 
               {% if perms.account.add_user %}
               <a href="{% url "account:user_new" %}" class="btn-outline">
@@ -28,13 +28,11 @@
                   </thead>
                   <tbody class="text-sm font-light text-gray-600">
                       {% for user in users %}
-                      <tr class="bg-white border-b border-gray-200 cursor-pointer hover:bg-gray-100"
-                      {% if perms.account.view_user %}
-                          onclick="window.location.replace('{% url 'account:user_detail' user.id %}')"
-                      {% endif %}
-                      >
+                      <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
                           <td class="px-6 py-3 text-left space-x-1">
-                              <span class="font-medium">{{ user.username }}</span>
+                              <a href="{% url 'account:user_detail' user.id %}" class="text-link-inline">
+                                  <span class="font-medium">{{ user.username }}</span>
+                              </a>
                           </td>
                           <td class="px-6 py-3 text-left">
                               {{ user.role | title }}

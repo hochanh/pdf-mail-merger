@@ -86,7 +86,7 @@ class EditorView(LoginRequiredMixin, BaseEditorView):
 
     @property
     def title(self):
-        return _('PDFs layout for: {}').format(self.document)
+        return _('PDF layout for: {}').format(self.document)
 
     def get_variables(self):
         return self.document.get_variables()

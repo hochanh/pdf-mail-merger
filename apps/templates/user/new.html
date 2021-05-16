@@ -4,10 +4,12 @@
 {% block content %}
     <div class="flex items-start justify-center">
         <div class="w-full space-y-4">
-          <h1 class="opacity-50">User management > Create new user</h1>
+            <div class="header">
+                <h1>Create new user</h1>
+            </div>
 
           <div class="my-6 mx-auto">
-              <form class="max-w-md space-y-6" method="POST">
+              <form class="max-w-3xl space-y-6" method="POST">
                   {% csrf_token %}
                   <div class="space-y-3">
                     <div>
@@ -32,7 +34,7 @@
                   </div>
                   <div>
                     <input type="submit" value="Create" class="btn-primary">
-                    <a class="btn-outline" href={% url 'account:user_index' %}>
+                    <a class="btn-light" href={% url 'account:user_index' %}>
                         Cancel
                     </a>
                   </div>

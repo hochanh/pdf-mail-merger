@@ -33,10 +33,6 @@ class BaseEditorView(TemplateView):
     title = None
     settings = {}
 
-    def get(self, request, *args, **kwargs):
-        resp = super().get(request, *args, **kwargs)
-        return resp
-
     def process_upload(self):
         f = self.request.FILES.get('background')
         error = False
