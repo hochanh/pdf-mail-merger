@@ -23,10 +23,6 @@ Or just: `poetry run honcho start`
 Compile assets first with `npm run build`,
 Then use Django collectstatic: `poetry run ./manage.py collectstatic`.
 
-## Hosted version
-
-[pdf.tixsumo.com](https://pdf.tixsumo.com).
-
 
 ## Self-host
 
