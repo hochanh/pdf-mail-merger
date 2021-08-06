@@ -4,6 +4,12 @@
 
 ![PDF mail merger](./static/images/pdf-mail-merger.png)
 
+
+## Offline app
+
+https://github.com/plainlab/plainmerge
+
+
 ## Local setup
 
 Make sure you got `npm` and `poetry` beforehand.
